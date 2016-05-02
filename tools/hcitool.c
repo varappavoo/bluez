@@ -2372,6 +2372,7 @@ static void sigint_handler(int sig)
 static void eir_parse_name(uint8_t *eir, size_t eir_len,
 						char *buf, size_t buf_len)
 {
+	printf("hcitool.c::eir_parse_name::buf(%c)\n", *buf);
 	size_t offset;
 
 	offset = 0;
@@ -2382,6 +2383,8 @@ static void eir_parse_name(uint8_t *eir, size_t eir_len,
 		/* Check for the end of EIR */
 		if (field_len == 0)
 			break;
+
+		printf("hcitool.c::eir[1](%d)\n", eir[1]);
 
 		if (offset + field_len > eir_len)
 			goto failed;

@@ -73,6 +73,7 @@ static char *hci_bit2str(hci_map *m, unsigned int val)
 
 static int hci_str2bit(hci_map *map, char *str, unsigned int *val)
 {
+	printf("hci.c::hci_str2bit::str(%c),val(%d)\n", *str, *val);
 	char *t, *ptr;
 	hci_map *m;
 	int set;
@@ -1118,7 +1119,7 @@ int hci_send_req(int dd, struct hci_request *r, int to)
 	socklen_t olen;
 	hci_event_hdr *hdr;
 	int err, try;
-
+	printf("hci.c::hci_send_req::dd(%d),to(%d)\n", dd,to);
 	olen = sizeof(of);
 	if (getsockopt(dd, SOL_HCI, HCI_FILTER, &of, &olen) < 0)
 		return -1;
